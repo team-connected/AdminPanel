@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="media content-section">
+    <div class="media-body">
+      <h2 class="account-heading">{{ data['firstname'] + ' ' + data['lastname']}}</h2>
+      <p class="text-secondary">ID: {{ data['_id'] }}</p>
+      <p class="text-secondary">E-Mail: {{ data['email'] }}</p>
+      <p class="text-secondary">Street: {{ data['street'] }}</p>
+      <p class="text-secondary">City: {{ data['city'] }}</p>
+      <p class="text-secondary">Locatie: {{ data['location'] }}</p>
+    </div>
+  </div>
+
+  <h3>Metingen</h3>
+  {% for meting in metrics %}
+    <article class="media content-section">
+      <div class="media-body">
+          <div class="flex-wrap">
+            <div class="d-inline-flex p-2 bg-primary text-white">{{ meting['metric_type'] + ' @ ' + meting['timestamp'] + ' - ' + meting['comment'] }}</div>
+            <div class="d-inline-flex p-2 bg-dark text-white">{{ 'Gemeten door: ' + meting['nurse_id'] }}</div>
+            <div class="d-inline-flex p-2 bg-dark text-white">{{ 'Waarde: ' + meting['value'] }}</div>
+            <div class="d-inline-flex p-2"><a href="{{ '/removemetric=' + meting['_id'] + '&patient=' + data['_id'] }}"><input type="button" class="btn btn-danger btn-sm" value="Remove"></a></div>
+          </div>
+        </div>
+      </article>
+  {% endfor %}
+{% endblock content %}

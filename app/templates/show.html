@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="media content-section">
+    <div class="media-body">
+      <h2 class="account-heading">{{ info['firstname'] + ' ' + info['lastname']}}</h2>
+      <p class="text-secondary">ID: {{ info['_id'] }}</p>
+      <p class="text-secondary">E-Mail: {{ info['email'] }}</p>
+      <p class="text-secondary">Street: {{ info['street'] }}</p>
+      <p class="text-secondary">City: {{ info['city'] }}</p>
+      <p class="text-secondary">Membership Status: {{ info['membership'] }}</p>
+    </div>
+  </div>
+
+  <h3>Workouts</h3>
+  {% for workout in data %}
+    <article class="media content-section">
+      <div class="media-body">
+          <div class="flex-wrap">
+            <div class="d-inline-flex p-2 bg-primary text-white">{{ workout['workout_type'] + ' @ ' + workout['date'] + ' - ' + workout['comment'] }}</div>
+            <div class="d-inline-flex p-2 bg-dark text-white">{{ workout['start_time'] + '~' + workout['end_time'] }}</div>
+            <div class="d-inline-flex p-2 bg-dark text-white">{{ workout['distance'] + ' meters' }}</div>
+            <div class="d-inline-flex p-2 bg-dark text-white">{{ workout['calories'] + ' calories' }}</div>
+            <div class="d-inline-flex p-2"><a href="{{ '/removeWorkout/email=' + info['email'] + '/id=' + workout['_id'] }}"><input type="button" class="btn btn-danger btn-sm" value="Remove"></a></div>
+          </div>
+        </div>
+      </article>
+  {% endfor %}
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+{% for patient in data %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="flex-wrap">
+        <div class="d-inline-flex p-2 bg-primary text-white">{{ patient['firstname'] + ' ' + patient['lastname'] }}</div>
+        <div class="d-inline-flex p-2 bg-dark text-white">{{ patient['email'] }}</div>
+        <div class="d-inline-flex p-2 bg-dark text-white">{{ patient['street'] + ', ' + patient['city'] }}</div>
+        <div class="d-inline-flex p-2 bg-dark text-white">{{ 'Locatie: ' + patient['location'] }}</div>
+        <div class="d-inline-flex p-2"><a href="{{ '/showpatient=' + patient['_id'] }}"><input type="button" class="btn btn-info btn-sm" value="Details"></a></div>
+        <div class="d-inline-flex p-2"><a href="{{ '/removepatient=' + patient['_id'] }}"><input type="button" class="btn btn-danger btn-sm" value="Remove"></a></div>
+      </div>
+    </div>
+  </article>
+{% endfor %}
+{% endblock content %}
