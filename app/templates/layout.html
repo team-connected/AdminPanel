@@ -33,7 +33,8 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item"><a class="nav-link text-light" href="/">Home</a></li>
           <li class="nav-item"><a class="nav-link text-light" href="/patienten">Patienten</a></li>
-          <li class="nav-item"><a class="nav-link disabled" href="/verpleging">Verpleging</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="/verpleging">Verpleging</a></li>
+          <li class="nav-item"><a class="nav-link disabled" href="/devices">Apparaten</a></li>
           <div class="dropdown-divider"></div>
           <li class="nav-item"><a class="nav-link text-light" href="/dashboard">Dashboard</a></li>
           <li class="nav-item"><a class="nav-link text-light" href="/logout">Logout</a></li>
@@ -45,13 +46,16 @@
       <div class="row justify-content-md-center">
         <div class="col-12 col-md-8">{% block content %}{% endblock %}</div>
         <div class="col-6 col-md-4">
-          <!-- <div class="media content-section">
+          <div class="media content-section">
               <div class="media-body">
-                <h2 class="account-heading">Welcome!</h2>
-                <p class="text-primary">Welcome to our simple admin page!</p>
-                <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                <h2 class="account-heading">Navigatie</h2>
+                <a href="/"><p class="text-primary">Home</p></a>
+                <p class="text-primary">Onze Tools:</p>
+                <a href="/patienten"><input type="button" class="btn btn-link" value="Patiënten Lijst"></a>
+                <a href="/verpleging"><input type="button" class="btn btn-link" value="Medewerkers Lijst"></a>
+                <a href="/devices"><input type="button" class="btn btn-link disabled" value="Apparatuur Lijst"></a>
               </div>
-          </div> -->
+          </div>
         </div>
     </div>
   </div>

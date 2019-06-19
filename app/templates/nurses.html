@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+{% for nurse in data %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="flex-wrap">
+        <div class="d-inline-flex p-2 bg-primary text-white">{{ nurse['firstname'] + ' ' + nurse['lastname'] }}</div>
+        <div class="d-inline-flex p-2 bg-dark text-white">{{ nurse['email'] }}</div>
+        <div class="d-inline-flex p-2 bg-dark text-white">{{ nurse['department'] }}</div>
+        <div class="d-inline-flex p-2"><a href="{{ '/shownurse=' + nurse['_id'] }}"><input type="button" class="btn btn-info btn-sm" value="Details"></a></div>
+        <div class="d-inline-flex p-2"><a href="{{ '/removenurse=' + nurse['_id'] }}"><input type="button" class="btn btn-danger btn-sm" value="Remove"></a></div>
+      </div>
+    </div>
+  </article>
+{% endfor %}
+{% endblock content %}

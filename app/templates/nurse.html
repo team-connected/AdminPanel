@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="media content-section">
+    <div class="media-body">
+      <h2 class="account-heading">{{ data['firstname'] + ' ' + data['lastname']}}</h2>
+      <p class="text-secondary">ID: {{ data['_id'] }}</p>
+      <p class="text-secondary">E-Mail: {{ data['email'] }}</p>
+      <p class="text-secondary">Afdeling: {{ data['department'] }}</p>
+    </div>
+  </div>
+{% endblock content %}

@@ -16,9 +16,20 @@
     <article class="media content-section">
       <div class="media-body">
           <div class="flex-wrap">
-            <div class="d-inline-flex p-2 bg-primary text-white">{{ meting['metric_type'] + ' @ ' + meting['timestamp'] + ' - ' + meting['comment'] }}</div>
-            <div class="d-inline-flex p-2 bg-dark text-white">{{ 'Gemeten door: ' + meting['nurse_id'] }}</div>
-            <div class="d-inline-flex p-2 bg-dark text-white">{{ 'Waarde: ' + meting['value'] }}</div>
+            <div class="d-inline-flex p-2 bg-primary text-white">{{ meting['timestamp'] }}</div>
+            {% if meting['comment'] %}
+              <div class="d-inline-flex p-2 bg-secondary text-white">&#x26A0; {{ meting['comment'] }}</div>
+            {% endif %}
+            {% if meting['bloeddruk'] %}
+              <div class="d-inline-flex p-2 bg-danger text-white">{{ 'Bloeddruk: ' + meting['bloeddruk'] }}</div>
+            {% endif %}
+            {% if meting['gewicht'] %}
+              <div class="d-inline-flex p-2 bg-success text-white">{{ meting['gewicht'] + ' KG' }}</div>
+            {% endif %}
+            {% if meting['temperatuur'] %}
+              <div class="d-inline-flex p-2 bg-info text-white">{{ meting['temperatuur'] + '℃' }}</div>
+            {% endif %}
+            <div class="d-inline-flex p-2"><a href="{{ '/shownurse=' + meting['nurse_id'] }}"><input type="button" class="btn btn-dark btn-sm" value="Info Medewerker"></a></div>
             <div class="d-inline-flex p-2"><a href="{{ '/removemetric=' + meting['_id'] + '&patient=' + data['_id'] }}"><input type="button" class="btn btn-danger btn-sm" value="Remove"></a></div>
           </div>
         </div>

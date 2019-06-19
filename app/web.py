@@ -47,6 +47,13 @@ def patienten():
 
     return render_template("patienten.html", data=data)
 
+@app.route("/verpleging")
+def nurses():
+    data = urllib.request.urlopen(apiUrl+'/api/v1/nurse/')
+    data = json.loads(data.read())
+
+    return render_template("nurses.html", data=data)
+
 @app.route("/showpatient=<id>")
 def patient(id):
     data = urllib.request.urlopen(apiUrl+'/api/v1/patient/_id='+id)
@@ -56,6 +63,13 @@ def patient(id):
     info = json.loads(info.read())
 
     return render_template("patient.html", data=data, metrics=info)
+
+@app.route("/shownurse=<id>")
+def nurse(id):
+    data = urllib.request.urlopen(apiUrl+'/api/v1/nurse/_id='+id)
+    data = json.loads(data.read())[0]
+
+    return render_template("nurse.html", data=data)
 
 @app.route('/removemetric=<id>&patient=<pid>')
 def removeMetric(pid,id):
