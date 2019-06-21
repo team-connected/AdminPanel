@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+  <form method="POST" action="">
+      {{ form.hidden_tag() }}
+      <fieldset class="form-group">
+          <h2 class="account-heading">Meting Toevoegen</h2>
+            <div class="form-group">
+              {{ form.bloeddruk.label(class="form-control-label") }}
+              {% if form.bloeddruk.errors %}
+                {{ form.bloeddruk(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.bloeddruk.errors %}
+                    <span> {{error}} </span>
+                  {% endfor %}
+                </div>
+              {% else %}
+                {{ form.bloeddruk(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+            <div class="form-group">
+              {{ form.gewicht.label(class="form-control-label") }}
+              {% if form.gewicht.errors %}
+                {{ form.gewicht(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.gewicht.errors %}
+                    <span> {{error}} </span>
+                  {% endfor %}
+                </div>
+              {% else %}
+                {{ form.gewicht(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+            <div class="form-group">
+              {{ form.temperatuur.label(class="form-control-label") }}
+              {% if form.temperatuur.errors %}
+                {{ form.temperatuur(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.temperatuur.errors %}
+                    <span> {{error}} </span>
+                  {% endfor %}
+                </div>
+              {% else %}
+                {{ form.temperatuur(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+            <div class="form-group">
+              {{ form.nurse_id.label(class="form-control-label") }}
+              {% if form.nurse_id.errors %}
+                {{ form.nurse_id(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.nurse_id.errors %}
+                    <span> {{error}} </span>
+                  {% endfor %}
+                </div>
+              {% else %}
+                {{ form.nurse_id(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+            <div class="form-group">
+              {{ form.device_id.label(class="form-control-label") }}
+              {% if form.device_id.errors %}
+                {{ form.device_id(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.device_id.errors %}
+                    <span> {{error}} </span>
+                  {% endfor %}
+                </div>
+              {% else %}
+                {{ form.device_id(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+            <div class="form-group">
+              {{ form.comment.label(class="form-control-label") }}
+              {% if form.comment.errors %}
+                {{ form.comment(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.comment.errors %}
+                    <span> {{error}} </span>
+                  {% endfor %}
+                </div>
+              {% else %}
+                {{ form.comment(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+      </fieldset>
+      <div class="form-group">
+        {{ form.submit(class="btn btn-secondary btn-lg") }}
+      </div>
+  </form>
+</div>
+{% endblock content %}

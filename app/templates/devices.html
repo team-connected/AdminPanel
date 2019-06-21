@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+{% for device in data %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="flex-wrap">
+        <div class="d-inline-flex p-2 bg-primary text-white">{{ device['name'] }}</div>
+        <div class="d-inline-flex p-2 bg-secondary text-white">{{ device['type'] }}</div>
+        <div class="d-inline-flex p-2 bg-dark text-white">{{ 'S/N: ' + device['sn'] }}</div>
+        <div class="d-inline-flex p-2 bg-info text-white">&#x26A0; {{ device['status'] }}</div>
+        <div class="d-inline-flex p-2 bg-danger text-white">{{ 'ID: ' + device['_id'] }}</div>
+        <div class="d-inline-flex p-2"><a href="{{ '/showdevice=' + device['_id'] }}"><input type="button" class="btn btn-info btn-sm" value="Details"></a></div>
+        <div class="d-inline-flex p-2"><a href="{{ '/removedevice=' + device['_id'] }}"><input type="button" class="btn btn-danger btn-sm" value="Remove"></a></div>
+      </div>
+    </div>
+  </article>
+{% endfor %}
+{% endblock content %}
