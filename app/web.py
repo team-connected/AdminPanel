@@ -18,7 +18,7 @@ SECRET_KEY = os.urandom(32)
 apiUrl = os.getenv("api_url", "http://umc-api.maartenmol.nl:5000")
 
 #Print some usefull information to console
-ascii_banner = pyfiglet.figlet_format("UMC Data-API")
+ascii_banner = pyfiglet.figlet_format("UMC AdminPanel")
 print(ascii_banner)
 print("Starting AdminPanel")
 print("API Server Version: V1.0")
@@ -126,28 +126,19 @@ def addpatient():
 
     return render_template('addpatient.html', form=form)
 
-@app.route('/searchUser', methods=['GET', 'POST'])
+@app.route('/zoeken', methods=['GET', 'POST'])
 def home():
     form = SearchForm()
     if form.validate_on_submit():
-        return redirect(url_for('search', email=form.email.data))
+        return redirect(url_for('search', ID=form.ID.data))
     return render_template('search.html', form=form)
 
-@app.route('/search/<email>')
-def search(email):
-    info = urllib.request.urlopen(apiUrl+'/api/v1/users/email='+email)
+@app.route('/search/<ID>') 
+def search(ID):
+    info = urllib.request.urlopen(apiUrl+'/api/v1/patient/_id='+ID)
     info = json.loads(info.read())[0]
 
-    data = urllib.request.urlopen(apiUrl+'/api/v1/workouts/email='+email)
-    data = json.loads(data.read())
-
-    return render_template('show.html', info=info, data=data)
-
-@app.route('/removeWorkout/email=<email>/id=<id>')
-def removeWorkout(email,id):
-    request = urllib.request.Request(apiUrl+'/api/v1/workouts/user='+email+'/id='+id, method='DELETE')
-    urllib.request.urlopen(request)
-    return redirect(redirect_url())
+    return render_template('show.html', info=info)
 
 #Define main APP
 if __name__ == '__main__':

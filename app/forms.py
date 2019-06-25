@@ -5,7 +5,7 @@ from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Le
 import os
 
 class SearchForm(FlaskForm):
-    email = StringField('E-Mail', [ Length(min=6, message=(u'Little short for an email address?')), Email(message=('That\'s not a valid email address.')), DataRequired(message=('That\'s not a valid email address.'))])
+    ID = StringField('ID', [ Length(min=32, max=32, message=(u'Deze lengte klopt niet...')), DataRequired(message=('That\'s not a valid ID.'))])
     submit = SubmitField('Search')
 
 class createPatient(FlaskForm):
