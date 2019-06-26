@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask, render_template, redirect, url_for, session, g, current_app, request
-from flask_oidc import OpenIDConnect
-from okta import UsersClient
+#from flask_oidc import OpenIDConnect
 from forms import SearchForm, createPatient, createMetric
 import datetime
 import requests
@@ -130,15 +129,22 @@ def addpatient():
 def home():
     form = SearchForm()
     if form.validate_on_submit():
-        return redirect(url_for('search', ID=form.ID.data))
+        return redirect(url_for('search', term=form.term.data, type=form.type.data))
     return render_template('search.html', form=form)
 
-@app.route('/search/<ID>') 
-def search(ID):
-    info = urllib.request.urlopen(apiUrl+'/api/v1/patient/_id='+ID)
-    info = json.loads(info.read())[0]
+@app.route('/search/<type>/<term>') 
+def search(type, term):
+    if type == "nurse":
+        info = urllib.request.urlopen(apiUrl+'/api/v1/nurse/_id='+term)
+        info = json.loads(info.read())[0]
 
-    return render_template('show.html', info=info)
+    if type == "patient":
+        info = urllib.request.urlopen(apiUrl+'/api/v1/patient/_id='+term)
+        info = json.loads(info.read())[0]
+
+    print(type)
+
+    return render_template('show.html', info=info, term=term)
 
 #Define main APP
 if __name__ == '__main__':

@@ -1,11 +1,12 @@
-from wtforms import StringField, SubmitField
+from wtforms import StringField, SubmitField, SelectField
 from flask_wtf import FlaskForm
 import urllib.request
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
 import os
 
 class SearchForm(FlaskForm):
-    ID = StringField('ID', [ Length(min=32, max=32, message=(u'Deze lengte klopt niet...')), DataRequired(message=('That\'s not a valid ID.'))])
+    type = SelectField('Categorie', choices=[('nurse', 'Medewerker'), ('patient', 'Patiënt'), ('metric', 'Meting'), ('device', 'Apparaat')])
+    term = StringField('ID or S/N', [ DataRequired(message=('That\'s not a valid ID.'))])
     submit = SubmitField('Search')
 
 class createPatient(FlaskForm):

@@ -2,12 +2,19 @@
 {% block content %}
   <div class="media content-section">
     <div class="media-body">
-      <h2 class="account-heading">{{ info['firstname'] + ' ' + info['lastname']}}</h2>
-      <p class="text-secondary">ID: {{ info['_id'] }}</p>
-      <p class="text-secondary">E-Mail: {{ info['email'] }}</p>
-      <p class="text-secondary">Street: {{ info['street'] }}</p>
-      <p class="text-secondary">City: {{ info['city'] }}</p>
-      <p class="text-secondary">Location: {{ info['location'] }}</p>
+      {% if type == "nurse" or "patient" %}
+        <h2 class="account-heading">{{ info['firstname'] + ' ' + info['lastname']}}</h2>
+        <p class="text-secondary">ID: {{ info['_id'] }}</p>
+        <p class="text-secondary">E-Mail: {{ info['email'] }}</p>
+      {% endif %}
+      {% if type == "patient" %}
+        <p class="text-secondary">Street: {{ info['street'] }}</p>
+        <p class="text-secondary">City: {{ info['city'] }}</p>
+        <p class="text-secondary">Location: {{ info['location'] }}</p>
+      {% endif %}
+      {% if type == "nurse" %}
+        <p class="text-secondary">Afdeling: {{ info['department'] }}</p>
+      {% endif %}
     </div>
   </div>
 
