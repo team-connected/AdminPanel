@@ -19,6 +19,19 @@
               {% endif %}
             </div>
             <div class="form-group">
+              {{ form.bloeddruk_device.label(class="form-control-label") }}
+              {% if form.bloeddruk_device.errors %}
+                {{ form.bloeddruk_device(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.bloeddruk_device.errors %}
+                    <span> {{error}} </span>
+                  {% endfor %}
+                </div>
+              {% else %}
+                {{ form.bloeddruk_device(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+            <div class="form-group">
               {{ form.gewicht.label(class="form-control-label") }}
               {% if form.gewicht.errors %}
                 {{ form.gewicht(class="form-control form-control-lg is-invalid") }}
@@ -29,6 +42,19 @@
                 </div>
               {% else %}
                 {{ form.gewicht(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+            <div class="form-group">
+              {{ form.gewicht_device.label(class="form-control-label") }}
+              {% if form.gewicht_device.errors %}
+                {{ form.gewicht_device(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.gewicht_device.errors %}
+                    <span> {{error}} </span>
+                  {% endfor %}
+                </div>
+              {% else %}
+                {{ form.gewicht_device(class="form-control form-control-lg") }}
               {% endif %}
             </div>
             <div class="form-group">
@@ -45,6 +71,32 @@
               {% endif %}
             </div>
             <div class="form-group">
+              {{ form.temperatuur_device.label(class="form-control-label") }}
+              {% if form.temperatuur_device.errors %}
+                {{ form.temperatuur_device(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.temperatuur_device.errors %}
+                    <span> {{error}} </span>
+                  {% endfor %}
+                </div>
+              {% else %}
+                {{ form.temperatuur_device(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+            <div class="form-group">
+              {{ form.pijnscore.label(class="form-control-label") }}
+              {% if form.pijnscore.errors %}
+                {{ form.pijnscore(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.pijnscore.errors %}
+                    <span> {{error}} </span>
+                  {% endfor %}
+                </div>
+              {% else %}
+                {{ form.pijnscore(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+            <div class="form-group">
               {{ form.nurse_id.label(class="form-control-label") }}
               {% if form.nurse_id.errors %}
                 {{ form.nurse_id(class="form-control form-control-lg is-invalid") }}
@@ -55,19 +107,6 @@
                 </div>
               {% else %}
                 {{ form.nurse_id(class="form-control form-control-lg") }}
-              {% endif %}
-            </div>
-            <div class="form-group">
-              {{ form.device_id.label(class="form-control-label") }}
-              {% if form.device_id.errors %}
-                {{ form.device_id(class="form-control form-control-lg is-invalid") }}
-                <div class="invalid-feedback">
-                  {% for error in form.device_id.errors %}
-                    <span> {{error}} </span>
-                  {% endfor %}
-                </div>
-              {% else %}
-                {{ form.device_id(class="form-control form-control-lg") }}
               {% endif %}
             </div>
             <div class="form-group">

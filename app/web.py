@@ -99,7 +99,9 @@ def addmetric(id):
         cTime = str(datetime.datetime.now())
 
         datax = {'gewicht' : form.gewicht.data, 'bloeddruk' : form.bloeddruk.data, 'temperatuur' : form.temperatuur.data, 
-                    'device_id' : form.device_id.data, 'nurse_id' : form.nurse_id.data, 'comment' : form.comment.data, 'timestamp' : cTime}
+                    'device_gewicht' : form.gewicht_device.data, 'device_bloeddruk' : form.bloeddruk_device.data, 
+                    'device_temperatuur' : form.temperatuur_device.data, 'nurse_id' : form.nurse_id.data, 
+                    'comment' : form.comment.data, 'timestamp' : cTime, 'pijnscore' : form.pijnscore.data}
         data = json.dumps(datax, sort_keys=True, indent=4)
         r = requests.post(url = apiUrl + '/api/v1/metric/patient=' + id, data = data)
 
