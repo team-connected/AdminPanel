@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 from flask import Flask, render_template, redirect, url_for, session, g, current_app, request
-#from flask_oidc import OpenIDConnect
 from forms import SearchForm, createPatient, createMetric
 import datetime
 import requests
@@ -20,7 +19,7 @@ apiUrl = os.getenv("api_url", "http://umc-api.maartenmol.nl:5000")
 ascii_banner = pyfiglet.figlet_format("UMC AdminPanel")
 print(ascii_banner)
 print("Starting AdminPanel")
-print("API Server Version: V1.0")
+print("API Server Version: V1.1")
 print("Developed by: Haydn Felida, Jeroen Verkerk, Sam Zandee, Shaniah Arrias, Maarten Mol. (All rights reserved)")
 
 #Define APP
